@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Đăng ký - Nhà thuốc DNT</title>
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <a class="brand" href="GiaoDien.html" aria-label="Trang chủ">
+        <span class="brand-mark">DNT</span>
+        <span class="brand-text">Nhà thuốc DNT</span>
+      </a>
+
+     
+
+      <h1 class="title">Tạo tài khoản</h1>
+      <p class="subtitle">Điền thông tin bên dưới để bắt đầu</p>
+
+      <form id="registerForm">
+        <div class="form-group">
+          <label for="fullname">Họ và tên</label>
+          <input id="fullname" type="text" placeholder="Nguyễn Văn A" required>
+          <small class="err" data-err-for="fullname"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Số điện thoại</label>
+          <input id="phone" type="tel" placeholder="09xxxxxxxx" required>
+          <small class="err" data-err-for="phone"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email (không bắt buộc)</label>
+          <input id="email" type="email" placeholder="you@email.com">
+          <small class="err" data-err-for="email"></small>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="password">Mật khẩu</label>
+            <input id="password" type="password" placeholder="Tối thiểu 6 ký tự" required minlength="6">
+            <small class="err" data-err-for="password"></small>
+          </div>
+          <div class="form-group">
+            <label for="confirm">Xác nhận mật khẩu</label>
+            <input id="confirm" type="password" placeholder="Nhập lại mật khẩu" required minlength="6">
+            <small class="err" data-err-for="confirm"></small>
+          </div>
+        </div>
+
+        <button type="submit" class="btn primary w-full">Đăng ký</button>
+      </form>
+
+      <p class="swap" style="margin-top: 24px;">
+        Đã có tài khoản?
+        <a href="dangnhap.html">Đăng nhập</a>
+      </p>
+    </div>
+  </div>
+
+  <script src="js/register.js?v=3"></script>
+</body>
+</html>

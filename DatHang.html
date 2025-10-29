@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Đặt hàng | Nhà thuốc DNT</title>
+
+  <!-- Có thể tái dùng StylesGD.css của m -->
+  <link rel="stylesheet" href="css/StylesGD.css">
+  <link rel="stylesheet" href="css/DatHang.css">
+ 
+</head>
+<body>
+  <div class="container">
+    <!-- breadcrumb -->
+    <div class="breadcrumb">
+      <a href="GiaoDien.html">Trang chủ</a> · <a href="GioHang.html">Giỏ hàng</a> · <strong>Đặt hàng</strong>
+    </div>
+
+    <!-- banner nhỏ -->
+    <div class="card banner">
+      <div class="body">
+        <strong>🚚 Giao nhanh trong 1h nội thành</strong> · Miễn phí vận chuyển cho đơn từ 499.000đ
+      </div>
+    </div>
+
+    <div class="grid">
+      <!-- THÔNG TIN -->
+      <section class="card">
+        <div class="head"><div class="h" style="font-weight:900;color:#0b2a6a">Thông tin nhận hàng</div></div>
+        <div class="body">
+          <form class="form" id="checkoutForm">
+            <div class="two">
+              <div class="field">
+                <label>Họ và tên *</label>
+                <input id="coName" type="text" placeholder="Nguyễn Văn A" required>
+              </div>
+              <div class="field">
+                <label>Số điện thoại *</label>
+                <input id="coPhone" type="tel" placeholder="09xxxxxxxx" required>
+              </div>
+            </div>
+
+            <div class="field">
+              <label>Địa chỉ giao hàng *</label>
+              <input id="coAddress" type="text" placeholder="Số nhà, đường, phường/xã, quận/huyện, tỉnh/thành" required>
+            </div>
+
+            <div class="two">
+              <div class="field">
+                <label>Tỉnh/Thành</label>
+                <input id="coProvince" type="text" placeholder="VD: TP. Hồ Chí Minh">
+              </div>
+              <div class="field">
+                <label>Quận/Huyện</label>
+                <input id="coDistrict" type="text" placeholder="VD: Quận 1">
+              </div>
+            </div>
+
+            <div class="field">
+              <label>Ghi chú</label>
+              <textarea id="coNote" rows="3" placeholder="Ví dụ: Giao giờ hành chính, gọi trước khi giao..."></textarea>
+            </div>
+
+            <div class="field">
+              <label>Phương thức thanh toán</label>
+              <div class="pay">
+                <label><input type="radio" name="pay" value="COD" checked> Thanh toán khi nhận hàng (COD)</label>
+                <label><input type="radio" name="pay" value="BANK"> Chuyển khoản ngân hàng</label>
+                <label><input type="radio" name="pay" value="WALLET"> Ví điện tử (Momo/VNPay)</label>
+              </div>
+            </div>
+
+            <div class="field">
+              <button class="btn primary" type="submit" style="width:100%">Đặt hàng</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- ĐƠN CỦA BẠN -->
+      <aside class="card">
+        <div class="head"><div class="h" style="font-weight:900;color:#0b2a6a">Đơn của bạn</div></div>
+        <div class="body">
+          <div id="items" class="items"></div>
+          <div class="total">
+            <div class="line"><span>Tạm tính</span><strong id="tSubtotal">0đ</strong></div>
+            <div class="line"><span>Phí vận chuyển</span><strong id="tShip">0đ</strong></div>
+            <div class="line grand"><span>Tổng thanh toán</span><strong id="tGrand">0đ</strong></div>
+          </div>
+
+          <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+            <a class="btn" href="javascript:history.back()">← Quay lại giỏ</a>
+            <a class="btn" href="GiaoDien.html">Trang chủ</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script src="js/DatHang.js"></script>
+</body>
+</html>

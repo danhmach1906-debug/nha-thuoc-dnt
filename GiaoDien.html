@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nhà thuốc – Giao nhanh trong 1h</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS tách riêng -->
+  <link rel="stylesheet" href="css/StylesGD.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/footer.css">
+</head>
+<body>
+
+ 
+<div id="intro" class="intro">
+  <video id="introVideo"
+         src="Intro/intro.mp4"
+         poster="Intro/poster.jpg"
+         autoplay
+         muted
+         playsinline
+         preload="auto">
+  </video>
+
+  <button id="skipIntro" class="intro-skip" aria-label="Bỏ qua intro">Bỏ qua</button>
+  </div>
+
+   
+
+    <!-- Logo/Text đè lên (tuỳ chọn) -->
+   
+  </div>
+  </div> <!-- /#app -->
+  <!-- BẮT ĐẦU APP: bọc TOÀN BỘ code hiện tại của bạn bên dưới vào đây -->
+  <div id="app" class="app is-hidden">
+  <!-- Top bar -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="badge">🏥 Nhà thuốc DNT <a class="pill" href="#">Tìm hiểu ngay</a></div>
+    </div>
+    <div class="container topbar-inner" style="padding-top:0; padding-bottom:16px">
+      <a href="#" class="logo" aria-label="Trang chủ">
+        <div class="logo-mark">DNT</div>
+        <div>
+          <div style="font-size:12px;opacity:.85;font-weight:700">DNT Retail</div>
+          <div style="margin-top:-2px">NHÀ THUỐC <span style="font-weight:900">DNT</span></div>
+        </div>
+      </a>
+      <div class="search">
+        <div class="input" role="search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 21l-4.35-4.35" stroke="#64748b" stroke-width="2" stroke-linecap="round"/><circle cx="11" cy="11" r="7" stroke="#64748b" stroke-width="2"/></svg>
+          <input id="mainSearchInput" placeholder="Tìm kiếm sản phẩm..." onkeypress="if(event.key==='Enter') searchProducts()" />
+          <button class="pill" style="border:none;cursor:pointer" onclick="searchProducts()">🔎</button>
+        </div>
+        <div class="quick-actions">
+          <a class="btn" style="color:#dc2626; font-weight:700">📞 Hotline: 089999999</a>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="btn primary" href="GioHang.html">🛒 Giỏ hàng <span id="cartCount" style="margin-left:6px">0</span></a>
+        <a class="btn" id="loginBtn" href="dangnhap.html"
+         style="color:#0e50ec !important; font-weight:600 !important; cursor:pointer">
+      👤 Đăng nhập
+      </a>
+
+        <div id="userMenu" style="display: none; position: relative;">
+          <a class="btn" id="userBtn" style="color:#0e50ec !important; font-weight:600 !important; cursor:pointer; display: flex; align-items: center; gap: 8px;">
+            <span>👤</span>
+            <div style="text-align: left;">
+              <div id="userName" style="font-weight: 700; font-size: 14px;"></div>
+              <div id="userRole" style="font-size: 11px; color: #64748b; font-weight: 500;"></div>
+            </div>
+            <span style="font-size: 10px;">▼</span>
+          </a>
+          <div id="userDropdown" style="display: none; position: absolute; top: 100%; right: 0; background: white; border: 1px solid #e2e8f0; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-top: 8px; min-width: 200px; z-index: 1000;">
+            <a href="#" id="dashboardLink" style="display: block; padding: 12px 16px; border-bottom: 1px solid #e2e8f0; font-weight: 600; color: #0f172a;">📊 Dashboard</a>
+            <a href="#" onclick="logout()" style="display: block; padding: 12px 16px; font-weight: 600; color: #dc2626;">🚪 Đăng xuất</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav class="nav">
+      <div class="container nav-inner">
+        <a href="MenuTpcn.html" class="nav-link">Thực phẩm chức năng</a>
+        <a href="menuDuocMyPham.html" class="nav-link">Dược mỹ phẩm</a>
+        <a href="MenuChamSocCaNhan.html" class="nav-link">Chăm sóc cá nhân</a>
+        <a href="MenuThietBiYte.html" class="nav-link">Thiết bị y tế</a>
+        <a href="MenuTatca.html" class="nav-link">Tất cả</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO SLIDER -->
+  <section class="hero container">
+    <div class="viewport">
+      <div class="slide active"><img src="image/banner1.jpg" alt="Banner 1"></div>
+      <div class="slide"><img src="image/Banner2.png" alt="Banner 2"></div>
+      <div class="slide"><img src="image/Banner3.jpg" alt="Banner 3"></div>
+      <div class="slide"><img src="image/Banner6.jpg" alt="Banner 6"></div>
+      <button class="nav-btn prev" aria-label="Prev">❮</button>
+      <button class="nav-btn next" aria-label="Next">❯</button>
+      <div class="dots" id="heroDots"></div>
+    </div>
+  </section>
+
+  <!-- Right -->
+  <section class="right">
+    <div id="products-anchor"></div>
+
+    <div class="chip-row" aria-label="nhóm nhãn">
+      <span class="chip">Bổ sung Canxi & Vitamin D</span>
+      <span class="chip">Vitamin tổng hợp</span>
+      <span class="chip">Dầu cá, Omega 3, DHA</span>
+      <span class="chip">Vitamin C các loại</span>
+      <span class="chip">Bổ sung Sắt & Axit Folic</span>
+      <span class="chip">Xem thêm</span>
+    </div>
+
+    <div class="section">
+      <div class="head">
+        <div class="h">Bán chạy nhất</div>
+        <a href="#products-anchor" class="nav-link" data-filter="all">Xem tất cả →</a>
+      </div>
+      <div class="products" aria-label="Sản phẩm bán chạy" id="productScroller">
+        <!-- Cards demo -->
+        <article class="card" data-id="p1" data-cat="tpcn" data-name="Imuvita Easylife" data-price="390000" data-unit="Hộp" data-brand="Easylife" data-desc="Bổ sung đa vitamin và khoáng chất cho người trưởng thành." data-img="image/Imuvitaeasylife.png" data-rx="false">
+          <div class="thumb"><img src="image/Imuvitaeasylife.png" alt="Imuvita Easylife" style="max-width:100%;max-height:100%;object-fit:contain;"></div>
+          <div class="meta"><div class="title-2">Viên uống Imuvita Easylife bổ sung vitamin...</div><div class="price">390.000đ / Hộp</div><div class="small">Còn hàng · Giao 1h</div></div>
+        </article>
+
+        <article class="card" data-id="p2" data-cat="tpcn" data-name="Canxi D3-K2 Kingphar 5ml" data-price="105000" data-unit="Hộp" data-brand="Kingphar" data-desc="Siro Canxi D3-K2 hỗ trợ phát triển xương răng cho bé." data-img="image/Sirocanxi.png" data-rx="false">
+          <div class="thumb"><img src="image/Sirocanxi.png" alt="Canxi D3-K2 Kingphar 5ml" style="max-width:100%;max-height:100%;object-fit:contain;"></div>
+          <div class="meta"><div class="title-2">Siro Canxi D3-K2 Kingphar hỗ trợ phát triển...</div><div class="price">105.000đ / Hộp</div><div class="small">Còn hàng · Giao 2h</div></div>
+        </article>
+
+        <article class="card" data-id="p3" data-cat="thuoc" data-name="Brauer Baby Kids D3+K2" data-price="396000" data-unit="Hộp" data-brand="Brauer" data-desc="D3+K2 hàm lượng cao. Tham khảo ý kiến chuyên gia trước khi dùng." data-img="image/Brauerbaby.png" data-rx="true">
+          <div class="thumb"><img src="image/Brauerbaby.png" alt="Brauer Baby Kids D3+K2" style="max-width:100%;max-height:100%;object-fit:contain;"></div>
+          <div class="meta"><div class="title-2">Brauer Baby Kids D3+K2 High Potency</div><div class="price">396.000đ / Hộp</div><div class="small">Bán chạy</div></div>
+        </article>
+
+        <article class="card" data-id="p4" data-cat="tpcn" data-name="Omexxel 3-6-9 Premium" data-price="453000" data-unit="Hộp" data-brand="Omexxel" data-desc="Hỗ trợ não bộ và tim mạch (Omega 3-6-9)." data-img="image/Omexxel369.png" data-rx="false">
+          <div class="thumb"><img src="image/Omexxel369.png" alt="Omexxel 3-6-9 Premium" style="max-width:100%;max-height:100%;object-fit:contain;"></div>
+          <div class="meta"><div class="title-2">Omexxel 3-6-9 Premium hỗ trợ não & tim mạch</div><div class="price">453.000đ / Hộp</div><div class="small">Freeship</div></div>
+        </article>
+
+        <article class="card" data-id="p5" data-cat="tpcn" data-name="DHA & Folic cho mẹ bầu" data-price="550000" data-unit="Hộp" data-brand="Prenatal" data-desc="Bổ sung DHA & Axit Folic cho phụ nữ mang thai." data-img="image/VienuongmebauDHA.png" data-rx="false">
+          <div class="thumb"><img src="image/VienuongmebauDHA.png" alt="DHA & Folic cho mẹ bầu" style="max-width:100%;max-height:100%;object-fit:contain;"></div>
+          <div class="meta"><div class="title-2">Viên uống cho mẹ bầu – DHA & Folic</div><div class="price">550.000đ / Hộp</div><div class="small">Ưu đãi thành viên</div></div>
+        </article>
+
+        <article class="card" data-id="p6" data-cat="tpcn" data-name="Omexxel 3-6-9 Premium" data-price="453000" data-unit="Hộp" data-brand="Omexxel" data-desc="Hỗ trợ não bộ và tim mạch (Omega 3-6-9)." data-img="image/Omexxel369.png" data-rx="false">
+          <div class="thumb"><img src="image/Omexxel369.png" alt="Omexxel 3-6-9 Premium" style="max-width:100%;max-height:100%;object-fit:contain;"></div>
+          <div class="meta"><div class="title-2">Omexxel 3-6-9 Premium hỗ trợ não & tim mạch</div><div class="price">453.000đ / Hộp</div><div class="small">Freeship</div></div>
+        </article>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="head"><div class="h">Từ khóa phổ biến</div></div>
+      <div style="padding:14px 16px" class="srch-key">
+        <span class="pill">Omega 3</span>
+        <span class="pill">Canxi</span>
+        <span class="pill">Dung dịch vệ sinh</span>
+        <span class="pill">Sữa rửa mặt</span>
+        <span class="pill">Thuốc nhỏ mắt</span>
+        <span class="pill">Kem chống nắng</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal chi tiết -->
+  <dialog id="dlg">
+    <form method="dialog">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+        <strong id="dlgTitle" style="font-size:16px"></strong>
+        <button class="btn" value="close">✕</button>
+      </div>
+
+      <div class="modal">
+        <div class="modal-image">
+          <img id="dlgImgPh" src="" alt="Ảnh sản phẩm" />
+        </div>
+        <div>
+          <div class="muted" id="dlgBrand"></div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin:6px 0">
+            <span class="pill" id="dlgCat"></span>
+            <span class="pill" id="dlgRx">Không kê đơn</span>
+            <span class="pill" id="dlgUnit"></span>
+          </div>
+          <div class="price" id="dlgPrice" style="font-size:20px"></div>
+          <p id="dlgDesc" style="margin:8px 0 12px"></p>
+          <label>Số lượng</label>
+          <div class="qty" style="margin:6px 0 10px">
+            <button type="button" id="minus">–</button>
+            <input id="qty" type="number" min="1" value="1" />
+            <button type="button" id="plus">+</button>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button type="button" class="btn primary" id="addToCart">Thêm vào giỏ</button>
+            <button class="btn" value="close">Đóng</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Cart drawer -->
+  <aside class="cart" id="cart">
+    <header>
+      <strong>Giỏ hàng</strong>
+      <button class="btn" id="closeCart">✕</button>
+    </header>
+    <div class="cart-list" id="cartList"></div>
+    <div class="footer">
+      <div class="total"><span>Tạm tính</span><span id="subtotal">0đ</span></div>
+      <div class="total" style="font-weight:700"><span>Tổng</span><span id="grand">0đ</span></div>
+      <button class="btn primary" id="checkout">Đặt hàng</button>
+      <small class="muted">Demo front-end – chưa kết nối thanh toán. Xử lý ở #checkout.</small>
+    </div>
+  </aside>
+
+  <!-- Services + Footer -->
+  <section class="services">
+    <div class="service-item"><i class="fa fa-truck"></i><h4>Miễn phí vận chuyển</h4><p>Đơn hàng từ 499K trở lên.</p></div>
+    <div class="service-item"><i class="fa fa-refresh"></i><h4>Đổi trả dễ dàng</h4><p>Trong vòng 7 ngày.</p></div>
+    <div class="service-item"><i class="fa fa-shield"></i><h4>Thanh toán an toàn</h4><p>Đa dạng phương thức.</p></div>
+    <div class="service-item"><i class="fa-solid fa-headset"></i><h4>Hỗ trợ 24/7</h4><p>Tư vấn tận tình.</p></div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-col"><h3>Giới thiệu</h3><p>Nhà thuốc DNT - Tin cậy mọi nhà.</p></div>
+    <div class="footer-col payment">
+      <h3>Phương thức thanh toán</h3>
+      <div class="payment-logos">
+        <a><img src="image/visa.png" alt="Visa"></a>
+        <a><img src="image/MasterCard.png" alt="MasterCard"></a>
+        <a><img src="image/MoMo.png" alt="Momo"></a>
+        <a><img src="image/VNPay.png" alt="VNPay"></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h3>Liên hệ</h3>
+      <p>Hotline: 089999999</p>
+      <p>Email: supportDNT@gmail.com</p>
+      <p>Địa chỉ: 73 phường Long Châu, Vĩnh Long</p>
+    </div>
+    <div class="footer-col">
+      <h3>Liên kết</h3>
+      <ul>
+        <li><a href="CSDT.html">Chính sách đổi trả</a></li>
+        <li><a href="CSBM.html">Chính sách bảo mật</a></li>
+        <li><a href="HDMH.html">Hướng dẫn mua hàng</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>Kết nối với tôi</h3>
+    
+  <div class="social-icons social-big">
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/share/175twixQU4/" target="_blank" rel="noopener" class="fb" aria-label="Facebook">
+      <i class="fa-brands fa-facebook-f"></i>
+    </a>
+
+    <!-- Messenger (m.me/PageID hoặc username) -->
+    <a href="https://m.me/TrinhDuong" target="_blank" rel="noopener" class="msgr" aria-label="Messenger">
+      <i class="fa-brands fa-facebook-messenger"></i>
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/trinhduong2k?igsh=b2o0d2llN3JhZm9s" target="_blank" rel="noopener" class="ig" aria-label="Instagram">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+
+    <!-- Zalo (zalo.me/sdt) -->
+    <a href="https://zalo.me/0396604955" target="_blank" rel="noopener" class="zalo" aria-label="Zalo">
+      <!-- dùng SVG logo Zalo để nét hơn -->
+      <svg viewBox="0 0 64 64" width="18" height="18" aria-hidden="true">
+        <rect width="64" height="64" rx="12" fill="#0068FF"/>
+        <path fill="#fff" d="M17 42h14.6l.5-3.5H21.9l12.1-15.5V19H18v3.5h10.8L17 38.1V42zm24.8.2c4.7 0 8.2-3.3 8.2-7.8s-3.5-7.8-8.2-7.8-8.2 3.3-8.2 7.8 3.5 7.8 8.2 7.8zm0-3.5c-2.8 0-4.7-2-4.7-4.3s1.9-4.3 4.7-4.3 4.7 2 4.7 4.3-1.9 4.3-4.7 4.3z"/>
+      </svg>
+    </a>
+  </div>
+
+
+    </div>
+    <div class="footer-col newsletter">
+      <h3>Đăng ký nhận tin</h3>
+      <form><input type="email" placeholder="Nhập email của bạn"><button type="submit">Đăng ký</button></form>
+    </div>
+  </footer>
+  <div class="copyright"><p>© 2025 Nhà thuốc DNT - Thiết kế bởi team</p></div>
+  
+  <!-- JS tách riêng -->
+  <script src="js/GiaoDien.js"></script>
+
+  
+</body>
+</html>

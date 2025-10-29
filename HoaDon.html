@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hóa đơn | Nhà thuốc DNT</title>
+  <link rel="stylesheet" href="css/StylesGD.css">
+  <link rel="stylesheet" href="css/HoaDon.css">
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="GiaoDien.html">Trang chủ</a> · <strong>Hóa đơn</strong>
+    </div>
+
+    <section class="card invoice">
+      <div class="head">
+        <div class="title-wrap">
+          <div class="inv-title">Chi tiết đơn hàng</div>
+          <div class="muted" id="invId">Mã đơn: ...</div>
+        </div>
+        <div class="status-wrap">
+          <span id="invStatus" class="badge status">Đang xử lý</span>
+        </div>
+      </div>
+      <div class="body">
+        <div id="loading" class="loading hide">
+          <div class="spin"></div>
+          <div style="margin-top:8px;font-weight:700">Đang tải hóa đơn...</div>
+        </div>
+        <div class="progress" id="invProgress">
+          <div class="step" data-step="1">Đặt hàng</div>
+          <div class="step" data-step="2">Xác nhận</div>
+          <div class="step" data-step="3">Đang giao</div>
+          <div class="step" data-step="4">Hoàn tất</div>
+        </div>
+        <div class="grid-2">
+          <div>
+            <div class="sec-title">Thông tin khách hàng</div>
+            <div class="info-grid">
+              <div><span class="muted">Họ tên</span><div id="cName">—</div></div>
+              <div><span class="muted">SĐT</span><div id="cPhone">—</div></div>
+              <div class="full"><span class="muted">Địa chỉ</span><div id="cAddress">—</div></div>
+              <div class="full"><span class="muted">Ghi chú</span><div id="cNote">—</div></div>
+            </div>
+          </div>
+          <div>
+            <div class="sec-title">Thông tin đơn</div>
+            <div class="info-grid">
+              <div><span class="muted">Thời gian đặt</span><div id="invTime">—</div></div>
+              <div><span class="muted">Thanh toán</span><div id="invPayment">—</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-title" style="margin-top:16px">Sản phẩm</div>
+        <div id="invItems" class="items"></div>
+
+        <div class="total">
+          <div class="line"><span>Tạm tính</span><strong id="invSubtotal">0đ</strong></div>
+          <div class="line"><span>Giảm giá</span><strong id="invDiscount">0đ</strong></div>
+          <div class="line"><span>Phí vận chuyển</span><strong id="invShipping">0đ</strong></div>
+          <div class="line grand"><span>Tổng thanh toán</span><strong id="invGrand">0đ</strong></div>
+        </div>
+
+        <div class="actions">
+          <button id="btnCancelOrder" class="btn danger">Hủy đơn</button>
+          <button id="btnPrint" class="btn">In hóa đơn</button>
+          <button id="btnCopyCode" class="btn">Sao chép mã</button>
+          <a class="btn" href="GiaoDien.html">Về trang chủ</a>
+          <a class="btn" href="GioHang.html">Xem giỏ hàng</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="js/HoaDon.js"></script>
+</body>
+</html>

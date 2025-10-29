@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nhân Viên - Nhà Thuốc DNT</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/NhanVien.css">
+</head>
+<body>
+  <header>
+    <h1>Trang Làm Việc - Nhân Viên DNT</h1>
+    <div class="employee-info">
+      <img src="https://cdn-icons-png.flaticon.com/512/219/219983.png" class="employee-avatar" alt="nhanvien">
+      <span>Xin chào, Nhân viên 👋</span>
+      <i class="arrow-down"></i>
+      <div class="employee-dropdown">
+        <a href="dangnhap.html">Chuyển tài khoản</a>
+        <a href="dangnhap.html">Đăng xuất</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="employee-container">
+    <div class="sidebar">
+      <div class="logo">
+        <img src="https://cdn-icons-png.flaticon.com/512/2966/2966485.png" alt="logo" width="35">
+      </div>
+      <ul class="menu">
+        <li class="active" data-page="sanpham"><i class="bi bi-capsule"></i><span>Sản phẩm</span></li>
+        <li data-page="hoadon"><i class="bi bi-receipt"></i><span>Hoá đơn</span></li>
+        <li data-page="khuyenmai"><i class="bi bi-gift"></i><span>Khuyến mãi</span></li>
+      </ul>
+    </div>
+
+    <div class="content" id="mainContent"></div>
+  </div>
+
+  <script src="js/NhanVien.js?v=3"></script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DNT – Giỏ hàng / Thanh toán</title>
+
+  <!-- giữ style nền cho header/nav nếu cần -->
+  <link rel="stylesheet" href="css/StylesGD.css">
+  <!-- style riêng cho trang giỏ hàng -->
+  <link rel="stylesheet" href="css/checkout.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/GioHang.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/StylesGD.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+   <!-- TOPBAR -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="badge">🏥 Nhà thuốc DNT <a class="pill" href="#">Tìm hiểu ngay</a></div>
+    </div>
+    <div class="container topbar-inner" style="padding-top:0; padding-bottom:16px">
+      <a href="GiaoDien.html" class="logo" aria-label="Trang chủ">
+        <div class="logo-mark">DNT</div>
+        <div>
+          <div style="font-size:12px;opacity:.85;font-weight:700">DNT Retail</div>
+          <div style="margin-top:-2px">NHÀ THUỐC <span style="font-weight:900">DNT</span></div>
+        </div>
+      </a>
+      <div class="search">
+        <div class="input" role="search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 21l-4.35-4.35" stroke="#64748b" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="11" cy="11" r="7" stroke="#64748b" stroke-width="2"/>
+          </svg>
+          <input placeholder="Giao nhanh trong 1h" />
+          <button class="pill" style="border:none;cursor:pointer">🔎</button>
+        </div>
+        <a class="btn" style="color:#dc2626;font-weight:700">📞 Hotline: 089999999</a>
+      </div>
+      <div class="actions">
+        <a class="btn primary" href="GioHang.html">🛒 Giỏ hàng <span id="cartCount" style="margin-left:6px">0</span></a>
+        <div id="userMenu" style="position:relative;display:none">
+          <button id="userBtn" class="btn" style="display:inline-flex;align-items:center;gap:8px">
+            <span>👤</span>
+            <div>
+              <div id="userName" style="color:#0e50ec;font-weight:800"></div>
+              <div id="userRole" class="muted">Khách hàng</div>
+            </div>
+            <span style="color:#0e50ec">▾</span>
+          </button>
+          <div id="userDropdown" style="position:absolute;right:0;top:110%;background:#fff;border:1px solid #e2e8f0;border-radius:10px;box-shadow:0 10px 20px rgba(2,6,23,.06);display:none;min-width:200px;z-index:50">
+            <a href="dangnhap.html" style="display:block;padding:10px 12px">Tài khoản</a>
+            <a id="dashboardLink" href="php/admin.php" style="display:none;padding:10px 12px;display:block">Bảng điều khiển</a>
+            <a href="php/logout.php" style="display:block;padding:10px 12px">Đăng xuất</a>
+          </div>
+        </div>
+        <a id="loginBtn" class="btn" href="dangnhap.html" style="color:#0e50ec !important;font-weight:600 !important;cursor:pointer">👤 Đăng nhập</a>
+      </div>
+    </div>
+    <nav class="nav">
+      <div class="container nav-inner">
+        <a href="MenuTpcn.html" class="nav-link">Thực phẩm chức năng</a>
+        <a href="menuDuocMyPham.html" class="nav-link">Dược mỹ phẩm</a>
+        <a href="MenuChamSocCaNhan.html" class="nav-link">Chăm sóc cá nhân</a>
+        <a href="MenuThietBiYte.html" class="nav-link">Thiết bị y tế</a>
+        <a href="MenuTatca.html" class="nav-link">Tất cả</a>
+      </div>
+    </nav>
+  </header>
+
+ 
+
+    <!-- Cột phải: giỏ + tổng kết -->
+    <aside class="col right">
+      <h2>Giỏ hàng của bạn</h2>
+
+      <div id="cartEmpty" class="empty hide">
+        Giỏ hàng đang trống. <a href="GiaoDien.html">Tiếp tục mua sắm</a>.
+      </div>
+
+      <div id="cartItems" class="cart-list"></div>
+
+      <div class="coupon-wrap">
+        <input id="couponInput" type="text" placeholder="Nhập mã khuyến mãi (VD: DNT10)">
+        <button id="applyCoupon" class="btn">Áp dụng</button>
+        <small class="muted">mã: <b>DNT10</b> (giảm 10%)</small>
+      </div>
+
+      <div class="totals">
+        <div><span>Tạm tính</span><span id="tSubtotal">0đ</span></div>
+        <div><span>Giảm giá</span><span id="tDiscount">-0đ</span></div>
+        <div><span>Phí giao hàng</span><span id="tShipping">0đ</span></div>
+        <hr>
+        <div class="grand"><span>Tổng cộng</span><span id="tGrand">0đ</span></div>
+      </div>
+
+      <button id="viewOrders" class="btn full" style="margin-top:8px">📜 Đơn hàng đã đặt</button>
+      <button id="placeOrder" class="btn primary full">Đặt hàng</button>
+      <small class="muted"> – nhấn “Đặt hàng”</small>
+    </aside>
+  </main>
+
+  <!-- Modal đơn hàng đã đặt -->
+  <dialog id="ordersDialog" style="max-width:720px;width:95%">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+      <div style="font-weight:900;color:#0b2a6a">Đơn hàng của tôi</div>
+      <button id="closeOrders" class="btn">Đóng</button>
+    </div>
+    <div id="ordersWrap" style="display:grid;gap:10px"></div>
+  </dialog>
+
+  <!-- Services + Footer -->
+  <section class="services">
+    <div class="service-item"><i class="fa fa-truck"></i><h4>Miễn phí vận chuyển</h4><p>Đơn hàng từ 499K trở lên.</p></div>
+    <div class="service-item"><i class="fa fa-refresh"></i><h4>Đổi trả dễ dàng</h4><p>Trong vòng 7 ngày.</p></div>
+    <div class="service-item"><i class="fa fa-shield"></i><h4>Thanh toán an toàn</h4><p>Đa dạng phương thức.</p></div>
+    <div class="service-item"><i class="fa-solid fa-headset"></i><h4>Hỗ trợ 24/7</h4><p>Tư vấn tận tình.</p></div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-col"><h3>Giới thiệu</h3><p>Nhà thuốc DNT - Tin cậy mọi nhà.</p></div>
+    <div class="footer-col payment">
+      <h3>Phương thức thanh toán</h3>
+      <div class="payment-logos">
+        <a><img src="image/visa.png" alt="Visa"></a>
+        <a><img src="image/MasterCard.png" alt="MasterCard"></a>
+        <a><img src="image/MoMo.png" alt="Momo"></a>
+        <a><img src="image/VNPay.png" alt="VNPay"></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h3>Liên hệ</h3>
+      <p>Hotline: 089999999</p>
+      <p>Email: supportDNT@gmail.com</p>
+      <p>Địa chỉ: 73 phường Long Châu, Vĩnh Long</p>
+    </div>
+    <div class="footer-col">
+      <h3>Liên kết</h3>
+      <ul>
+        <li><a href="CSDT.html">Chính sách đổi trả</a></li>
+        <li><a href="CSBM.html">Chính sách bảo mật</a></li>
+        <li><a href="HDMH.html">Hướng dẫn mua hàng</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>Kết nối với tôi</h3>
+    
+  <div class="social-icons social-big">
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/share/175twixQU4/" target="_blank" rel="noopener" class="fb" aria-label="Facebook">
+      <i class="fa-brands fa-facebook-f"></i>
+    </a>
+
+    <!-- Messenger (m.me/PageID hoặc username) -->
+    <a href="https://m.me/TrinhDuong" target="_blank" rel="noopener" class="msgr" aria-label="Messenger">
+      <i class="fa-brands fa-facebook-messenger"></i>
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/trinhduong2k?igsh=b2o0d2llN3JhZm9s" target="_blank" rel="noopener" class="ig" aria-label="Instagram">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+
+    <!-- Zalo (zalo.me/sdt) -->
+    <a href="https://zalo.me/0396604955" target="_blank" rel="noopener" class="zalo" aria-label="Zalo">
+      <!-- dùng SVG logo Zalo để nét hơn -->
+      <svg viewBox="0 0 64 64" width="18" height="18" aria-hidden="true">
+        <rect width="64" height="64" rx="12" fill="#0068FF"/>
+        <path fill="#fff" d="M17 42h14.6l.5-3.5H21.9l12.1-15.5V19H18v3.5h10.8L17 38.1V42zm24.8.2c4.7 0 8.2-3.3 8.2-7.8s-3.5-7.8-8.2-7.8-8.2 3.3-8.2 7.8 3.5 7.8 8.2 7.8zm0-3.5c-2.8 0-4.7-2-4.7-4.3s1.9-4.3 4.7-4.3 4.7 2 4.7 4.3-1.9 4.3-4.7 4.3z"/>
+      </svg>
+    </a>
+  </div>
+
+
+    </div>
+    <div class="footer-col newsletter">
+      <h3>Đăng ký nhận tin</h3>
+      <form><input type="email" placeholder="Nhập email của bạn"><button type="submit">Đăng ký</button></form>
+    </div>
+  </footer>
+  <div class="copyright"><p>© 2025 Nhà thuốc DNT - Thiết kế bởi team</p></div>
+
+  <script src="js/GioHang.js"></script>
+</body>
+</html>

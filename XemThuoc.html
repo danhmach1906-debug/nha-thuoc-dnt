@@ -1,0 +1,63 @@
+<!DOCTYPE html><html lang="vi"><head>
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Chi tiết thuốc</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root{--ink:#0f172a;--muted:#64748b;--brand:#2b6ef2}
+      body{margin:0;font-family:Inter,system-ui;background:#f8fafc;color:var(--ink)}
+      .wrap{max-width:960px;margin:32px auto;padding:16px}
+      .card{background:#fff;border-radius:16px;padding:20px;box-shadow:0 10px 20px rgba(2,6,23,.06),0 6px 8px rgba(2,6,23,.04);display:grid;grid-template-columns:320px 1fr;gap:20px}
+      .thumb{aspect-ratio:1/1;background:#eef2ff;border-radius:12px;display:grid;place-items:center}
+      .title{font-size:22px;font-weight:800;margin:0 0 6px}
+      .price{font-weight:800;color:#0652ff;margin:10px 0}
+      .small{color:var(--muted);font-size:14px}
+      label{display:block;margin-top:12px;font-weight:600}
+      input[type=number]{width:100px;padding:8px;border:1px solid #e2e8f0;border-radius:10px}
+      .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;border:1px solid #e2e8f0;background:#fff;font-weight:700;cursor:pointer}
+      .btn.primary{background:var(--brand);color:#fff;border-color:var(--brand)}
+      .bar{display:flex;align-items:center;gap:10px;margin-top:12px}
+      a.back{display:inline-flex;align-items:center;gap:6px;color:var(--brand);text-decoration:none;margin-bottom:12px;font-weight:700}
+      @media (max-width:900px){.card{grid-template-columns:1fr}}
+    </style>
+    </head><body>
+      <div class="wrap">
+        <a href="GiaoDien.html" class="back">← Về trang chính</a>
+        <div class="card">
+          <div class="thumb"><span>Ảnh sản phẩm</span></div>
+          <div>
+            <h1 class="title" id="p-title">Thuốc</h1>
+            <div class="small">Mã SP: <span id="p-sku">LC-001</span> · Còn hàng · Giao 1h</div>
+            <div class="price" id="p-price">0đ</div>
+    
+            <div class="small">Thành phần/Quy cách (demo): Vitamin D3, K2; Hộp 30 viên.</div>
+            <div class="small">Chỉ định (demo): Bổ sung vitamin, hỗ trợ xương khớp. Đọc kỹ hướng dẫn trước khi dùng.</div>
+    
+            <div class="bar">
+              <label for="qty" class="small">Số lượng</label>
+              <input id="qty" type="number" value="1" min="1">
+              <button class="btn primary" id="buy">Thêm vào giỏ</button>
+              <button class="btn" onclick="location.href='checkout.html'">Mua ngay</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    <script>
+      const q = new URLSearchParams(location.search);
+      const title = q.get('title') || 'Thuốc';
+      const price = Number(q.get('price')||0);
+      document.getElementById('p-title').textContent = title;
+      document.title = title + ' – Chi tiết thuốc';
+      document.getElementById('p-price').textContent =
+         new Intl.NumberFormat('vi-VN',{style:'currency',currency:'VND'}).format(price);
+    
+      // Demo: thêm vào giỏ -> alert
+      document.getElementById('buy').addEventListener('click', ()=>{
+        const qty = Number(document.getElementById('qty').value||1);
+        alert(`Đã thêm ${qty} x ${title} vào giỏ.`);
+      });
+    </script>
+    </body></html>
+    

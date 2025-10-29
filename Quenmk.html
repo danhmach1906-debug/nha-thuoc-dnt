@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quên mật khẩu - Nhà thuốc DNT</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/StylesGD.css">
+  <link rel="stylesheet" href="css/forgot.css">
+  <style>
+    /* vài tiện ích nhỏ nếu thiếu trong css cũ */
+    .radio-row{display:flex;gap:12px;margin:10px 0 6px}
+    .hide{display:none}
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="logo">DNT</div>
+
+    <!-- Bước 1: Nhập SĐT/Email -->
+    <div id="step1" class="form-section active">
+      <h1>Quên mật khẩu</h1>
+      <p class="subtitle">Chọn kênh nhận OTP và nhập SĐT hoặc Email của bạn.</p>
+
+      <div class="radio-row">
+        <label><input type="radio" name="otpChannel" value="phone" checked> Qua Số điện thoại</label>
+        <label><input type="radio" name="otpChannel" value="email"> Qua Email</label>
+      </div>
+
+      <form id="forgotStep1Form">
+        <!-- Phone -->
+        <div class="form-group" id="phoneGroup">
+          <label>Số điện thoại</label>
+          <input type="tel" id="fpPhone" placeholder="VD: 0987654321" autocomplete="tel">
+        </div>
+
+        <!-- Email -->
+        <div class="form-group hide" id="emailGroup">
+          <label>Email</label>
+          <input type="email" id="fpEmail" placeholder="VD: tenban@gmail.com" autocomplete="email">
+        </div>
+
+        <button type="submit" class="btn-login">Gửi mã OTP</button>
+      </form>
+
+      <p class="swap" style="text-align:center;margin-top:12px">
+        Nhớ mật khẩu rồi?
+        <a href="dangnhap.html" class="link-strong">Đăng nhập</a>
+      </p>
+    </div>
+
+    <!-- Bước 2: Nhập OTP + mật khẩu mới -->
+    <div id="step2" class="form-section">
+      <h1>Đặt lại mật khẩu</h1>
+      <p class="subtitle">Nhập mã OTP và mật khẩu mới của bạn.</p>
+
+      <form id="forgotStep2Form">
+        <div class="form-group">
+          <label>Mã OTP</label>
+          <input
+            type="text"
+            id="fpOtp"
+            placeholder="6 chữ số"
+            maxlength="6"
+            required
+            style="letter-spacing:4px;text-align:center;"
+          >
+        </div>
+
+        <div class="form-group">
+          <label>Mật khẩu mới</label>
+          <input type="password" id="fpNewPass" placeholder="Tối thiểu 6 ký tự" required>
+        </div>
+
+        <div class="form-group">
+          <label>Xác nhận mật khẩu mới</label>
+          <input type="password" id="fpNewPass2" placeholder="Nhập lại mật khẩu" required>
+        </div>
+
+        <button type="submit" class="btn-login">Đặt lại mật khẩu</button>
+
+        <div class="resend-row">
+          <a href="#" id="fpResend" class="forgot-link">Gửi lại mã</a>
+          <span id="fpTimer" class="muted" style="margin-left:8px"></span>
+        </div>
+      </form>
+
+      <p class="swap" style="text-align:center;margin-top:12px">
+        Quay về
+        <a href="dangnhap.html" class="link-strong">Đăng nhập</a>
+      </p>
+    </div>
+  </div>
+
+  <script src="js/forgot.js"></script>
+</body>
+</html>

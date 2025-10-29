@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DNT – Danh mục sản phẩm</title>
+
+  <!-- Fonts + CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- CSS tách riêng -->
+  <link rel="stylesheet" href="css/menutpcn.css">
+  <link rel="stylesheet"href="css/footer.css" />
+  <link rel="stylesheet" href="css/StylesGD.css">
+
+</head>
+<body>
+  <!-- Top bar -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="badge">🏥 Nhà thuốc DNT <a class="pill" href="#">Tìm hiểu ngay</a></div>
+    </div>
+    <div class="container topbar-inner" style="padding-top:0; padding-bottom:16px">
+      <a href="GiaoDien.html" class="logo" aria-label="Trang chủ">
+        <div class="logo-mark">DNT</div>
+        <div>
+          <div style="font-size:12px;opacity:.85;font-weight:700">DNT Retail</div>
+          <div style="margin-top:-2px">NHÀ THUỐC <span style="font-weight:900">DNT</span></div>
+        </div>
+      </a>
+      <div class="search">
+        <div class="input" role="search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 21l-4.35-4.35" stroke="#64748b" stroke-width="2" stroke-linecap="round"/><circle cx="11" cy="11" r="7" stroke="#64748b" stroke-width="2"/></svg>
+          <input placeholder="Giao nhanh trong 1h" />
+          <button class="pill" style="border:none;cursor:pointer">🔎</button>
+        </div>
+        <div class="quick-actions">
+          <a class="btn" style="color:#dc2626; font-weight:700">📞 Hotline: 089999999</a>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="btn primary" href="GioHang.html">🛒 Giỏ hàng <span id="cartCount" style="margin-left:6px">0</span></a>
+        <a class="btn" id="loginBtn" href="dangnhap.html" style="color:#0e50ec !important; font-weight:600 !important; cursor:pointer">👤 Đăng nhập</a>
+        <div id="userMenu" style="display: none; position: relative;">
+          <a class="btn" id="userBtn" style="color:#0e50ec !important; font-weight:600 !important; cursor:pointer; display: flex; align-items: center; gap: 8px;">
+            <span>👤</span>
+            <div style="text-align: left;">
+              <div id="userName" style="font-weight: 700; font-size: 14px;"></div>
+              <div id="userRole" style="font-size: 11px; color: #64748b; font-weight: 500;"></div>
+            </div>
+            <span style="font-size: 10px;">▼</span>
+          </a>
+          <div id="userDropdown" style="display: none; position: absolute; top: 100%; right: 0; background: white; border: 1px solid #e2e8f0; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-top: 8px; min-width: 200px; z-index: 1000;">
+            <a href="#" id="dashboardLink" style="display: block; padding: 12px 16px; border-bottom: 1px solid #e2e8f0; font-weight: 600; color: #0f172a;">📊 Dashboard</a>
+            <a href="#" onclick="logout()" style="display: block; padding: 12px 16px; font-weight: 600; color: #dc2626;">🚪 Đăng xuất</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav class="nav">
+      <div class="container nav-inner">
+        <a href="MenuTpcn.html" class="nav-link active">Thực phẩm chức năng</a>
+        <a href="menuDuocMyPham.html" class="nav-link">Dược mỹ phẩm</a>
+        <a href="MenuChamSocCaNhan.html" class="nav-link">Chăm sóc cá nhân</a>
+        <a href="MenuThietBiYte.html" class="nav-link">Thiết bị y tế</a>
+        <a href="MenuTatca.html" class="nav-link">Tất cả</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="grid">
+      <!-- LEFT -->
+      <aside class="left">
+        <div class="head">Danh mục</div>
+        <nav class="nav" id="leftNav">
+          <a data-panel="lam-dep">💄 Hỗ trợ làm đẹp</a>
+          <a data-panel="than-kinh">🧠 Thần kinh não</a>
+          <a data-panel="tieu-hoa">🍽️ Hỗ trợ tiêu hóa</a>
+          <a data-panel="dieu-tri">💊 Hỗ trợ điều trị</a>
+          <a data-panel="tim-mach">❤️ Sức khỏe tim mạch</a>
+          <a data-panel="dinh-duong">🥗 Dinh dưỡng</a>
+        </nav>
+      </aside>
+
+      <!-- RIGHT -->
+      <section class="right">
+        <div class="chip-row" id="chipRow"></div>
+        <div class="section">
+          <div class="head">
+            <div class="h" id="sectionTitle">Bán chạy nhất</div>
+            <a id="seeAll" href="#">Xem tất cả →</a>
+          </div>
+          <div class="products" id="scroller"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Cart drawer (shared) -->
+  <aside class="cart" id="cart">
+    <header>
+      <strong>Giỏ hàng</strong>
+      <button class="btn" id="closeCart">✕</button>
+    </header>
+    <div class="cart-list" id="cartList"></div>
+    <div class="footer">
+      <div class="total"><span>Tạm tính</span><span id="subtotal">0đ</span></div>
+      <div class="total" style="font-weight:700"><span>Tổng</span><span id="grand">0đ</span></div>
+      <button class="btn primary" id="checkout">Đặt hàng</button>
+      <small class="muted">Demo front-end – chưa kết nối thanh toán. Xử lý ở #checkout.</small>
+    </div>
+  </aside>
+
+  <!-- Services + Footer -->
+  <section class="services">
+    <div class="service-item"><i class="fa fa-truck"></i><h4>Miễn phí vận chuyển</h4><p>Đơn hàng từ 499K trở lên.</p></div>
+    <div class="service-item"><i class="fa fa-refresh"></i><h4>Đổi trả dễ dàng</h4><p>Trong vòng 7 ngày.</p></div>
+    <div class="service-item"><i class="fa fa-shield"></i><h4>Thanh toán an toàn</h4><p>Đa dạng phương thức.</p></div>
+    <div class="service-item"><i class="fa-solid fa-headset"></i><h4>Hỗ trợ 24/7</h4><p>Tư vấn tận tình.</p></div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-col"><h3>Giới thiệu</h3><p>Nhà thuốc DNT - Tin cậy mọi nhà.</p></div>
+    <div class="footer-col payment">
+      <h3>Phương thức thanh toán</h3>
+      <div class="payment-logos">
+        <a><img src="image/visa.png" alt="Visa"></a>
+        <a><img src="image/MasterCard.png" alt="MasterCard"></a>
+        <a><img src="image/MoMo.png" alt="Momo"></a>
+        <a><img src="image/VNPay.png" alt="VNPay"></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h3>Liên hệ</h3>
+      <p>Hotline: 089999999</p>
+      <p>Email: supportDNT@gmail.com</p>
+      <p>Địa chỉ: 73 phường Long Châu, Vĩnh Long</p>
+    </div>
+    <div class="footer-col">
+      <h3>Liên kết</h3>
+      <ul>
+        <li><a href="#">Chính sách đổi trả</a></li>
+        <li><a href="#">Chính sách bảo mật</a></li>
+        <li><a href="#">Hướng dẫn mua hàng</a></li>
+      </ul>
+    </div>
+
+ <div class="footer-col">
+      <h3>Kết nối với tôi</h3>
+    
+  <div class="social-icons social-big">
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/share/175twixQU4/" target="_blank" rel="noopener" class="fb" aria-label="Facebook">
+      <i class="fa-brands fa-facebook-f"></i>
+    </a>
+
+    <!-- Messenger (m.me/PageID hoặc username) -->
+    <a href="https://m.me/TrinhDuong" target="_blank" rel="noopener" class="msgr" aria-label="Messenger">
+      <i class="fa-brands fa-facebook-messenger"></i>
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/trinhduong2k?igsh=b2o0d2llN3JhZm9s" target="_blank" rel="noopener" class="ig" aria-label="Instagram">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+
+    <!-- Zalo (zalo.me/sdt) -->
+    <a href="https://zalo.me/0396604955" target="_blank" rel="noopener" class="zalo" aria-label="Zalo">
+      <!-- dùng SVG logo Zalo để nét hơn -->
+      <svg viewBox="0 0 64 64" width="18" height="18" aria-hidden="true">
+        <rect width="64" height="64" rx="12" fill="#0068FF"/>
+        <path fill="#fff" d="M17 42h14.6l.5-3.5H21.9l12.1-15.5V19H18v3.5h10.8L17 38.1V42zm24.8.2c4.7 0 8.2-3.3 8.2-7.8s-3.5-7.8-8.2-7.8-8.2 3.3-8.2 7.8 3.5 7.8 8.2 7.8zm0-3.5c-2.8 0-4.7-2-4.7-4.3s1.9-4.3 4.7-4.3 4.7 2 4.7 4.3-1.9 4.3-4.7 4.3z"/>
+      </svg>
+    </a>
+  </div>
+
+    <div class="footer-col newsletter">
+      <h3>Đăng ký nhận tin</h3>
+      <form><input type="email" placeholder="Nhập email của bạn"><button type="submit">Đăng ký</button></form>
+    </div>
+  </footer>
+  <div class="copyright"><p>© 2025 Nhà thuốc DNT - Thiết kế bởi team</p></div>
+
+  <!-- Product Detail Dialog -->
+  <dialog id="dlg" class="product-dialog">
+    <div class="dialog-content">
+      <button class="close" onclick="dlg.close()">×</button>
+      <div class="img">
+        <img id="dlgImgPh" src="image/placeholder.png" alt="Ảnh sản phẩm">
+      </div>
+      <div class="info">
+        <h2 id="dlgTitle"></h2>
+        <p class="brand" id="dlgBrand"></p>
+        <div class="tags">
+          <span id="dlgCat"></span>
+          <span id="dlgRx"></span>
+          <span id="dlgUnit"></span>
+        </div>
+        <div class="price" id="dlgPrice"></div>
+        <p id="dlgDesc" class="desc"></p>
+
+        <div class="qty-box">
+          <button id="minus">−</button>
+          <input id="qty" value="1" />
+          <button id="plus">+</button>
+        </div>
+        <div class="actions">
+          <button id="addToCart" class="btn-primary">Thêm vào giỏ</button>
+          <button onclick="dlg.close()">Đóng</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- CSS cho dialog -->
+  <style>
+    .product-dialog {
+      border: none;
+      border-radius: 12px;
+      padding: 0;
+      max-width: 800px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      background: white;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .product-dialog::backdrop {
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(4px);
+    }
+
+    .dialog-content {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .dialog-content .img {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .dialog-content .img img {
+      max-width: 100%;
+      max-height: 300px;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .dialog-content .info {
+      padding: 0 15px;
+    }
+
+    .dialog-content h2 {
+      margin: 0 0 10px;
+      font-size: 1.5rem;
+      color: #333;
+    }
+
+    .dialog-content .price {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #e74c3c;
+      margin: 15px 0;
+    }
+
+    .dialog-content .desc {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .qty-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .qty-box button {
+      width: 30px;
+      height: 30px;
+      border: 1px solid #ddd;
+      background: #f8f8f8;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .qty-box input {
+      width: 50px;
+      height: 30px;
+      text-align: center;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .actions button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .actions .btn-primary {
+      background: #4CAF50;
+      color: white;
+    }
+
+    .actions button:last-child {
+      background: #f1f1f1;
+    }
+
+    .actions button:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #666;
+    }
+
+    .close:hover {
+      color: #000;
+    }
+  </style>
+
+  <!-- JS riêng -->
+  <script src="js/sessionUI.js"></script>
+  <script src="js/cartDrawer.js"></script>
+  <script src="js/tpcn.js"></script>
+</body>
+</html>

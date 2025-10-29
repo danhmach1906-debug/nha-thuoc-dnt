@@ -1,0 +1,99 @@
+/* ==== RESET & BASE ==== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #fafafa;
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 960px;
+  margin: 50px auto;
+  background: #fff;
+  padding: 40px 50px;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+/* ==== HEADER ==== */
+h1 {
+  color: #0e50ec;
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+h2 {
+  color: #0e50ec;
+  margin-top: 28px;
+  margin-bottom: 10px;
+  font-size: 20px;
+  border-left: 5px solid #0e50ec;
+  padding-left: 10px;
+}
+
+p {
+  margin-bottom: 14px;
+  text-align: justify;
+  font-size: 16px;
+}
+
+/* ==== LISTS ==== */
+ul {
+  margin: 10px 0 20px 20px;
+}
+
+ul li {
+  margin-bottom: 8px;
+  font-size: 15.5px;
+}
+
+/* ==== NOTE BOX ==== */
+.note {
+  background: #e9f1ff;
+  border-left: 5px solid #0e50ec;
+  padding: 14px 18px;
+  border-radius: 6px;
+  margin: 25px 0;
+  font-size: 15.5px;
+  color: #0e50ec;
+}
+
+/* ==== BUTTON ==== */
+.back-btn {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 10px 20px;
+  background: #0e50ec;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background 0.25s;
+}
+
+.back-btn:hover {
+  background: #0630a9;
+}
+
+/* ==== RESPONSIVE ==== */
+@media (max-width: 600px) {
+  .container {
+    padding: 25px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  p, ul li {
+    font-size: 15px;
+  }
+}
